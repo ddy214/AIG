@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head></head>
+<body>
+<h1>What Kind Of Chinese Food Would You Like Quiz</h1>
+<h2>Find Out What Kind Of Chinese Food You Should Order</h2>
+<br>
+<form action = "{% url 'quizCalc' %}" method = "POST">
+{% csrf_token %}
+<ol>
+{% for question in questions %}
+<h2>{{ question.question_text }}</h2>
+{% for answer in question.choice_set.all %}
+<input type="radio" name="{{ question.question_text }}" id = "answer{{ forloop.counter }}" value="{{ answer.region }}"/>
+<label for="answer{{ forloop.counter }}">{{ answer.choice_text }}</label>
+{% endfor %}
+{% endfor %}
+</ol>
+<input type="submit" value="Done" />
+</form>
+</body>
