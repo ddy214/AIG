@@ -38,7 +38,8 @@ def quizCalc(request):
             if chinese_region[region] > chinese_region[max]:
                 max = region
         #deletes session variable that handles error
-        del request.session['error']
+        if 'error' in request.session:
+            del request.session['error']
         return HttpResponseRedirect(reverse('results', kwargs={'string_arg':max}))
     except MultiValueDictKeyError:
         #handles exception when user doesn't enter input
