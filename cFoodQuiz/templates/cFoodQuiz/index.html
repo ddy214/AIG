@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="eng">
-<head></head>
+{% load static %}
+<head>
+    <link href= "{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href= "{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">   
+</head>
 <body>
+    {% if error %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> You Didn't Enter All The Questions.
+    </div>
+    {% endif %}
+<div class="jumbotron text-center">
+     <div class="container">
+<img src = {% static 'img/food-top.jpg' %}>
 <h1>What Kind Of Chinese Food Would You Like Quiz</h1>
 <h2>Find Out What Kind Of Chinese Food You Should Order</h2>
+    </div>
+</div>
 <br>
+<div class ="text-center">
 <form action = "{% url 'quizCalc' %}" method = "POST">
 {% csrf_token %}
 <ol>
@@ -16,6 +32,10 @@
 {% endfor %}
 {% endfor %}
 </ol>
-<input type="submit" value="Done" />
+<button type="button submit" class="btn btn-primary btn-lg">Done</button>
 </form>
+    <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</div>
 </body>
+</html>
