@@ -50,14 +50,10 @@ def quizCalc(request):
 def results(request, string_arg):
     string_arg = str(string_arg)
     if string_arg == "south":
-    #return HttpResponse("You Like Things That Have Flavor And Variety\nYou Won't Go Wrong With Fried Rice")
         return render(request, 'cFoodQuiz/south.html')
     elif string_arg =="north":
-    # return HttpResponse("You Like Sweet and Tangy Things\nGo With Sweet and Sour Pork!\nYou Will Get A Crunch")
         return render(request, 'cFoodQuiz/north.html')
     elif string_arg == "east":
-    #return HttpResponse("You Like Things That Are Fresh\n Go With Chicken And Brocolli!\nLight And Delicious")
         return render(request, 'cFoodQuiz/east.html')
     else:
-#return HttpResponse("You Like To Have A Party In Your Mouth!\nDo Yourself A Favor And Order Something HOT!!\nSichuan Chili Chicken Is The Way To GO")
         return render(request, 'cFoodQuiz/west.html')
